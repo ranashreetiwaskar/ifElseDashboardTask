@@ -1,0 +1,35 @@
+
+@use '../../../styles' as *;
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  h2 {
+    font-size: 24px;
+    // margin: 20px;
+  }
+
+    button {
+      margin-left: 20px;
+    }
+  }
+
+
+.btn-customize, .btn-export {
+
+  @include btn-base;
+  background-color: $color-bg;
+  color: $color-text;
+  border: 1px solid $color-border;
+  padding: 8px 20px;
+
+  &:hover {
+    background-color: $color-bg-hover;
+  }
+
+  .btn-icon {
+    @include btn-icon;
+  }
+}

@@ -1,0 +1,170 @@
+<div class="dashboard">
+  <!-- Header Section -->
+  <!-- <div class="dashboard-header">
+      <h2>Welcome back, Olivia</h2>
+      <div class="actions">
+        <button class="btn">Customize</button>
+        <button class="btn">Export</button>
+      </div>
+    </div> -->
+
+  <div class="widgets">
+    <div class="chart-card">
+      <div class="chart-wrapper">
+        <div class="icon-container">
+          <i class="fas fa-cube"></i>
+        </div>
+        <div class="chart-header">
+          <h4>Vendor breakdown</h4>
+          <p>Keep track of vendors and their security ratings.</p>
+        </div>
+      </div>
+      
+      <div class="chart-container">
+        <div class="chart-place">
+          <app-bar-chart></app-bar-chart>
+        </div>
+      </div>
+      <div class="chart-footer">
+        <button class="btn-report">View full report</button>
+      </div>
+    </div>
+
+    
+    <div class="vendor-card">
+      <div class="card-header">
+        <div>
+          <h4>Vendors monitored</h4>
+          <p>You’re using 80% of available spots.</p>
+        </div>
+        <button class="menu-btn">
+          <i class="fas fa-ellipsis-v"></i>
+        </button>
+      </div>
+      <app-circle-chart></app-circle-chart>
+      <div class="card-footer">
+        <button class="btn-upgrade">
+          <i class="fas fa-bolt"></i>
+          Upgrade plan
+        </button>
+      </div>
+    </div>      
+    </div>
+
+  <div class="table-section">
+    <div class="table-header">
+      <h4>Team members <span class="user-count">{{ gridData.length }} Users</span></h4>
+      <i class="fas fa-ellipsis-v"></i>
+    </div>
+    <app-spinner *ngIf="loading"></app-spinner>
+
+    <ng-container *ngIf="!loading">
+      <table class="team-table">
+        <thead>
+          <tr class="table-head-row">
+            <th>
+              <input type="checkbox" [checked]="allSelected" (change)="toggleSelectAll($event)" />
+            </th>
+            <th *ngFor="let col of gridColumns" [class]="'col-align-' + col.align">
+              <span class="column-title">
+                {{ col.column_name }}
+                <ng-container [ngSwitch]="col.column_name">
+                  <i *ngSwitchCase="'Status'" class="fas fa-arrow-down"></i>
+                  <i *ngSwitchCase="'Role'" class="fas fa-question-circle"></i>
+                </ng-container>
+              </span>
+            </th>
+            <!-- <th *ngFor="let col of gridColumns" [class]="'col-align-' + col.align">
+              {{ col.column_name }}
+            </th> -->
+            <th class="col-align-center"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let data of gridData">
+  
+            <td>
+              <input
+                type="checkbox"
+                [checked]="selectedRows.has(data.id)"
+                (change)="toggleRowSelection(data.id, $event)"
+              />
+            </td>
+      
+            <td *ngIf="gridColumns[0]?.type === 'name'" class="user-info">
+              <!-- <div class="user-circle"> -->
+                <h3>{{ data.name.first_name.charAt(0) }}{{ data.name.last_name.charAt(0) }}</h3>
+              <!-- </div> -->
+              <div>
+                <strong>{{ data.name.first_name }} {{ data.name.last_name }}</strong>
+                <span>{{ data.name.handle }}</span>
+              </div>
+            </td>
+      
+            <td *ngIf="gridColumns[1]?.type === 'status'">
+              <span [ngClass]="'status-' + data.status.toLowerCase()">
+                <i class="fas fa-circle status-dot"></i>{{ data.status }}
+              </span>
+            </td>
+      
+            <td class="role" *ngIf="gridColumns[2]?.type === 'text'">{{ data.role }}</td>
+      
+            <td *ngIf="gridColumns[3]?.type === 'progress'">
+              <div class="progress-wrapper">
+                <div class="progress-bar">
+                  <div class="fill" [ngClass]="'progress-' + data.license_used"></div>
+                </div>
+                <span class="progress-text">{{ data.license_used }}%</span>
+              </div>
+            </td>
+      
+            <td *ngIf="gridColumns[4]?.type === 'tags'">
+              <span
+                class="tag"
+                *ngFor="let tag of data.teams"
+                [ngClass]="[
+                  'tag-bg-' + tag.background_color.replace('#', '').toLowerCase(),
+                  'tag-text-' + tag.text_color.replace('#', '').toLowerCase()
+                ]"
+              >
+                {{ tag.value }}
+              </span>
+            </td>
+      
+            <td class="actions">
+              <button class="icon-btn" (click)="deleteUser(data.id)"><i class="fas fa-trash"></i></button>
+              <button class="icon-btn" (click)="editUser(data.id)"><i class="fas fa-pen"></i>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </ng-container>
+    
+    
+    <div class="pagination-container">
+      <div class="pagination-left">
+        <button class="page-btn">
+          <span><i class="fas fa-arrow-left"></i></span>
+          Previous
+        </button>
+      </div>
+
+      <div class="pagination-center">
+        <ng-container *ngFor="let i of [].constructor(3); let idx = index">
+          <button class="page-btn">{{ idx + 1 }}</button>
+        </ng-container>
+        <span class="dots">...</span>
+        <ng-container *ngFor="let i of [].constructor(3); let idx = index">
+          <button class="page-btn">{{ idx + 8 }}</button>
+        </ng-container>
+      </div>
+
+      <div class="pagination-right">
+        <button class="page-btn">Next
+          <span><i class="fas fa-arrow-right"></i></span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

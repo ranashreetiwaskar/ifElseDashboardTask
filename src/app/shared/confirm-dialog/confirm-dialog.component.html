@@ -1,0 +1,22 @@
+<div class="dialog-container">
+    <div class="dialog-wrapper">
+      <div *ngIf="data.action === 'edit'; else deleteTemplate">
+        <h3>Edit user</h3>
+        <i>{{ data.name }}</i>
+      </div>
+  
+      <ng-template #deleteTemplate>
+        <h3>Are you sure?</h3>
+        <i>{{ data.name }}</i>
+        <p>{{ data.message }}</p>
+      </ng-template>
+  
+      <div class="dialog-actions">
+        <button class="btn cancel" (click)="onCancel()">Cancel</button>
+        <button class="btn" [ngClass]="data.action === 'edit' ? 'confirm-edit' : 'confirm-delete'" (click)="onConfirm()">
+            {{ data.action === 'edit' ? 'Confirm' : 'Delete' }}
+        </button>
+      </div>
+    </div>
+  </div>
+  

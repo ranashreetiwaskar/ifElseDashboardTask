@@ -1,0 +1,64 @@
+
+
+
+// Colors
+$color-primary: #4f46e5;
+$color-primary-dark: #4338ca;
+$color-text: #2b303a;
+$color-border: #5d6168;
+$color-bg: #ffffff;
+$color-bg-hover: #dae0e6;
+$color-gray: #5d6168;
+
+$color-purple: #886fce;
+
+// Font & Spacing
+$font-size-sm: 14px;
+$font-weight-medium: 550;
+$btn-padding: 6px 12px;
+$radius-pill: 8px;
+$gap-small: 8px;
+$icon-size: 18px;
+
+// Borders
+$border-all-boxes: 1px solid #525057;
+
+
+
+@mixin btn-base {
+    display: inline-flex;
+    align-items: center;
+    gap: $gap-small;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-medium;
+    padding: $btn-padding;
+    border-radius: $radius-pill;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    text-decoration: none;
+  }
+  
+  @mixin btn-icon {
+    font-size: $icon-size;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  @mixin tag-style {
+    display: inline-block;
+    font-size: 12px;
+    padding: 4px 8px;
+    border: 1px solid;
+    border-radius: 12px;
+    margin-right: 4px;
+  }
+
+  @mixin profile-avatar {
+
+    position: relative;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    overflow: hidden;
+  }

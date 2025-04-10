@@ -1,0 +1,372 @@
+@use '../../../styles' as *;
+
+.dashboard {
+  .widgets {
+    display: flex;
+    gap: 24px;
+    // margin-top: 20px;
+    // border: 2px dashed red;
+
+    .chart-card {
+      background: #ffffff;
+      border: $border-all-boxes;
+      border-radius: 12px;
+      flex: 1;
+      // height: 500px;
+    }
+
+    .chart-header {
+      h4 {
+        font-size: 16px;
+        font-weight: 600;
+        margin: 0;
+      }
+
+      p {
+        margin: 4px 0 0;
+        font-size: 13px;
+        color: $color-gray;
+      }
+    }
+
+    .chart-place {
+      // width: 900px;
+      // height: 200px;
+      background: #fdfdfd;
+      // margin: 12px 0;
+      padding: 12px;
+      // border-radius: 8px;
+      text-align: center;
+      line-height: 200px;
+      color: #ffffff;
+      // margin-top: 50px;
+      // margin-bottom: 60px;
+    }
+  }
+
+  .table-section {
+    margin: 40px 0;
+    border: 1px solid rgb(97, 89, 89);
+    border-radius: 12px;
+    // padding: 20px 0;
+
+    .table-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 30px 0 20px;
+      border-bottom: $border-all-boxes;
+
+      h4 {
+        font-size: 18px;
+      }
+    }
+
+    .team-table {
+      width: 100%;
+      // margin-top: 12px;
+      border-collapse: collapse;
+
+      .table-head-row {
+        background-color: #f0f0f0;
+      }
+
+      thead {
+        th {
+          padding: 24px 6px;
+        }
+      }
+
+      tbody {
+        tr {
+        border-bottom: 1px solid #d4d4d4;
+        transition: all 0.2s ease-in-out;
+      
+        &:hover {
+          background-color: #f0f0f0;
+          cursor: pointer;
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+          border-color: #ccc;
+        }
+      } 
+
+      td {
+        padding-left: 12px;
+      }
+    }     
+
+      .user-info {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+
+        h3 {
+          border: $border-all-boxes;
+          background-color: #e9e9ec;
+          @include profile-avatar;
+          text-align: center;
+          padding-top: 12px;
+        }
+
+        div {
+          display: flex;
+          flex-direction: column;
+          span {
+            font-size: 12px;
+            color: $color-gray;
+          }
+        }
+      }
+
+      .status-customer {
+        @include tag-style;
+        background: #aaeab2;
+        color: #085024;
+      }
+      .status-churned {
+        @include tag-style;
+        background: #ddd6d6;
+        color: #191616;
+      }
+      .status-dot {
+        font-size: 8px;
+        margin-right: 6px;
+      }
+
+      .progress-bar {
+        background: #e0e0e0;
+        height: 8px;
+        border-radius: 4px;
+        overflow: hidden;
+        width: 120px;
+        margin-bottom: 4px;
+      }
+      @for $i from 0 through 100 {
+        .progress-#{$i} {
+          width: $i * 1%;
+          background-color: $color-purple;
+          height: 100%;
+        }
+      }
+
+      .progress-wrapper {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .progress-text {
+        font-size: 14px;
+        color: $color-gray;
+        min-width: 30px;
+      }
+
+      .actions {
+        display: flex;
+        gap: 12px;
+        .icon-btn {
+          background: none;
+          border: none;
+          // padding: 0;
+          // margin: 0 6px;
+          cursor: pointer;
+          color: $color-gray;
+        }
+      }
+    }
+
+    .role {
+
+      color: $color-gray;
+    }
+
+    .pagination-container {
+      position: relative;
+      width: 100%;
+      height: 50px;
+    }
+
+    .pagination-left {
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      padding-left: 15px;
+    }
+
+    .pagination-right {
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      padding-right: 15px;
+    }
+
+    mat-icon {
+      font-size: 18px;
+      vertical-align: middle;
+    }
+
+    .pagination-center {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      gap: 8px;
+    }
+
+    .dots {
+      font-size: 14px;
+      color: black;
+    }
+  }
+}
+
+.btn-report,
+.btn-upgrade,
+.page-btn {
+  @include btn-base;
+  background-color: $color-bg;
+  color: $color-text;
+  border: 1px solid $color-border;
+
+  &:hover {
+    background-color: $color-bg-hover;
+  }
+
+  .btn-icon {
+    @include btn-icon;
+  }
+}
+
+.chart-footer,
+.card-footer {
+  display: flex;
+  justify-content: flex-end;
+  padding: 20px;
+}
+
+
+.vendor-card {
+  // width: 320px;
+  background: #fffefe;
+  border-radius: 12px;
+  border: $border-all-boxes;
+  // padding: 20px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  // font-family: "Inter", sans-serif;
+  display: flex;
+  flex-direction: column;
+  // gap: 16px;
+
+  .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 20px;
+
+    h4 {
+      font-size: 16px;
+      font-weight: 600;
+      margin: 0;
+    }
+
+    p {
+      margin: 4px 0 0;
+      font-size: 13px;
+      color: $color-gray;
+    }
+
+    .menu-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+  }
+
+  
+}
+
+.tag {
+  @include tag-style;
+}
+
+.user-count {
+  @include tag-style;
+  background-color: #f8f5fe;
+  color: $color-purple;
+}
+
+// Dynamic alignments
+
+.col-align-left {
+  text-align: left;
+}
+.col-align-center {
+  text-align: center;
+}
+.col-align-right {
+  text-align: right;
+}
+
+// Dynamic colors
+
+.tag-text-886fce {
+  color: #886fce;
+}
+
+.tag-bg-f8f5fe {
+  background-color: #f8f5fe;
+}
+
+.tag-text-ffb21a {
+  color: #ffb21a;
+}
+
+.tag-bg-fbf2e1 {
+  background-color: #fbf2e1;
+}
+
+.tag-text-494dcb {
+  color: #494dcb;
+}
+
+.tag-bg-eff4fe {
+  background-color: #eff4fe;
+}
+
+.tag-text-2c5bcc {
+  color: #2c5bcc;
+}
+
+.tag-bg-f1f8fe {
+  background-color: #f1f8fe;
+}
+
+.chart-container {
+  border-top: $border-all-boxes;
+  border-bottom: $border-all-boxes;
+}
+
+.chart-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 15px;
+}
+
+.icon-container {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #0d0d1c;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  i {
+    color: white;
+    font-size: 32px;
+    transform: rotate(240deg);
+  }
+}
