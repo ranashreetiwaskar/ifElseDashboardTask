@@ -1,37 +1,15 @@
 @use '../../../styles' as *;
 
 .dashboard {
-  // padding: 24px;
-
-  // .dashboard-header {
-  //   display: flex;
-  //   justify-content: space-between;
-  //   align-items: center;
-
-  //   h2 {
-  //     font-size: 24px;
-  //     margin: 0;
-  //   }
-
-  //   .actions {
-  //     button {
-  //       margin-left: 10px;
-  //     }
-  //   }
-  // }
-
   .widgets {
     display: flex;
     gap: 24px;
-    // margin-top: 20px;
-    // border: 2px dashed red;
 
     .chart-card {
       background: #ffffff;
       border: $border-all-boxes;
       border-radius: 12px;
       flex: 1;
-      // height: 500px;
     }
 
     .chart-header {
@@ -49,45 +27,18 @@
     }
 
     .chart-place {
-      // width: 900px;
-      // height: 200px;
-    //   background: #f4f4f4;
-      // margin: 12px 0;
+      background: #fdfdfd;
       padding: 12px;
-      // border-radius: 8px;
       text-align: center;
       line-height: 200px;
       color: #ffffff;
-      // margin-top: 50px;
-      // margin-bottom: 60px;
     }
-
-    // .monitor-value {
-    //   font-size: 48px;
-    //   font-weight: bold;
-    //   color: #6c63ff;
-    // }
-
-    // .monitor-progress {
-    //   margin-top: 10px;
-
-    //   span {
-    //     display: block;
-    //     font-size: 14px;
-    //   }
-
-    //   .limit {
-    //     color: #999;
-    //     font-size: 13px;
-    //   }
-    // }
   }
 
   .table-section {
     margin: 40px 0;
     border: 1px solid rgb(97, 89, 89);
     border-radius: 12px;
-    // padding: 20px 0;
 
     .table-header {
       display: flex;
@@ -103,7 +54,6 @@
 
     .team-table {
       width: 100%;
-      // margin-top: 12px;
       border-collapse: collapse;
 
       .table-head-row {
@@ -133,24 +83,6 @@
         padding-left: 12px;
       }
     }     
-
-      // th {
-      //   padding: 20px 10px;
-      //   border-bottom: 1px solid #d4d4d4;
-
-      // }
-      
-      // td {
-      //   padding: 0 12px;
-      //   border-bottom: 1px solid #d4d4d4;
-      // }
-
-      // tbody {
-      //   tr {
-
-      //     border-bottom: 1px solid #d4d4d4;
-      //   }
-      // }
 
       .user-info {
         display: flex;
@@ -224,8 +156,6 @@
         .icon-btn {
           background: none;
           border: none;
-          // padding: 0;
-          // margin: 0 6px;
           cursor: pointer;
           color: $color-gray;
         }
@@ -272,20 +202,6 @@
       gap: 8px;
     }
 
-    // .btn.small,
-    // .page-btn {
-    //   padding: 6px 12px;
-    //   background-color: #fff;
-    //   border: 1px solid #ddd;
-    //   border-radius: 4px;
-    //   font-size: 14px;
-    //   cursor: pointer;
-
-    //   &:hover {
-    //     background-color: #f0f0f0;
-    //   }
-    // }
-
     .dots {
       font-size: 14px;
       color: black;
@@ -300,7 +216,6 @@
   background-color: $color-bg;
   color: $color-text;
   border: 1px solid $color-border;
-  // padding: 8px 20px;
 
   &:hover {
     background-color: $color-bg-hover;
@@ -318,27 +233,14 @@
   padding: 20px;
 }
 
-// .btn-report {
-//   background-color: #6d28d9;
-//   color: white;
-//   border: none;
-//   padding: 8px 16px;
-//   border-radius: 6px;
-//   cursor: pointer;
-//   font-size: 14px;
-// }
 
 .vendor-card {
-  // width: 320px;
   background: #fffefe;
   border-radius: 12px;
   border: $border-all-boxes;
-  // padding: 20px;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
-  // font-family: "Inter", sans-serif;
   display: flex;
   flex-direction: column;
-  // gap: 16px;
 
   .card-header {
     display: flex;
@@ -365,108 +267,7 @@
     }
   }
 
-  .card-body {
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-    border-top: $border-all-boxes;
-    border-bottom: $border-all-boxes;
-    padding: 32px 20px;
-    // height: 278px;
-    // padding-top: 50px;
-
-    .top-section {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      position: relative;
-
-      .progress-wrapper {
-        width: 160px;
-        height: 80px;
-
-        .semi-circle {
-          width: 100%;
-          height: auto;
-
-          .bg {
-            fill: none;
-            stroke: #e5e7eb;
-            stroke-width: 10;
-          }
-
-          .progress {
-            fill: none;
-            stroke: $color-purple;
-            stroke-width: 10;
-            stroke-linecap: round;
-            stroke-dasharray: 64, 100;
-            transition: stroke-dasharray 0.3s ease;
-          }
-
-          .center-text {
-            fill: #111827;
-            font-size: 16px;
-            font-weight: bold;
-            text-anchor: middle;
-            dominant-baseline: middle;
-          }
-        }
-      }
-
-      .growth {
-        position: absolute;
-        top: 0;
-        right: 0;
-        display: flex;
-        align-items: center;
-        color: #10b981;
-        font-size: 13px;
-        font-weight: 600;
-
-        .fa-arrow-trend-up {
-          font-size: 16px;
-          margin-right: 4px;
-        }
-      }
-    }
-
-    .text-group {
-      h5 {
-        font-size: 14px;
-        font-weight: 600;
-        margin: 0 0 4px;
-      }
-
-      p {
-        font-size: 13px;
-        color: $color-gray;
-        margin: 0;
-      }
-    }
-
-    // .upgrade-btn {
-    //   display: inline-flex;
-    //   align-items: center;
-    //   gap: 6px;
-    //   background: #f9fafb;
-    //   border: 1px solid #e5e7eb;
-    //   padding: 8px 14px;
-    //   border-radius: 8px;
-    //   font-weight: 500;
-    //   font-size: 14px;
-    //   cursor: pointer;
-    //   color: #111827;
-
-    //   mat-icon {
-    //     font-size: 16px;
-    //   }
-
-    //   &:hover {
-    //     background: #f3f4f6;
-    //   }
-    // }
-  }
+  
 }
 
 .tag {

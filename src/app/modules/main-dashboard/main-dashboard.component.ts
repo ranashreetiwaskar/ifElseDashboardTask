@@ -1,17 +1,14 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ConfirmDialogComponent } from '../../shared/confirm-dialog/confirm-dialog.component';
 import { ApiService } from '../../shared/services/api.service';
 import { HttpClient } from '@angular/common/http';
-import { ConfirmDialogComponent } from '../../shared/confirm-dialog/confirm-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
-
 
 @Component({
   selector: 'app-main-dashboard',
   standalone: false,
   templateUrl: './main-dashboard.component.html',
-  styleUrl: './main-dashboard.component.scss',
-  encapsulation: ViewEncapsulation.None,
-
+  styleUrl: './main-dashboard.component.scss'
 })
 export class MainDashboardComponent implements OnInit {
   gridColumns: any[] = [];
@@ -56,16 +53,13 @@ export class MainDashboardComponent implements OnInit {
     }
   }
 
+
   getUsers() {
 
     this.apiService.fetchData().subscribe((res: any) => {
       this.gridColumns = res.grid_columns;
       this.gridData = res.grid_data;
       this.loading = false;
-
-      console.log(res);
-      console.log(res.grid_columns);
-      console.log(res.grid_data);
     });
 
   }
@@ -85,8 +79,9 @@ export class MainDashboardComponent implements OnInit {
       }
     });
   
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().subscribe((result: string) => {
       if (result === 'confirm') {
+        alert('Team member removed successfully!');
         this.gridData = this.gridData.filter(item => item.id !== rowId);
       }
     });

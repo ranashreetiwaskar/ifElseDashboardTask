@@ -1,15 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { LayoutComponent } from './layout/layout/layout.component';
-import { BarChartComponent } from './dashboard/charts/bar-chart/bar-chart.component';
 
 const routes: Routes = [
-  
   {
-    path: '',
+    path: 'dashboard',
     loadChildren: () =>
-      import('../app/dashboard/dashboard.module').then((m) => m.DashboardModule),
-  }
+      import('./modules/dashboard.module').then(m => m.DashboardModule)
+  },
+  { path: '', redirectTo: 'dashboard', pathMatch: 'full' }
 ];
 
 @NgModule({
